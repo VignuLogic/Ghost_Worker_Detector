@@ -30,34 +30,35 @@ function FraudFlags() {
       })
   }, [])
 
-  if (loading) return <p style={{ padding: '20px' }}>Checking for fraud...</p>
+  if (loading) return <p style={{ padding: '20px', color: 'var(--text)' }}>Checking for fraud...</p>
 
   return (
     <div style={{ padding: '30px' }}>
-      <h2>🚨 Fraud Flags</h2>
+      <h2 style={{ marginBottom: '24px' }}>🚨 Fraud Flags</h2>
       {fraudData.length === 0 ? (
-        <p style={{ color: '#4caf50', fontSize: '18px' }}>✅ No fraud detected across all employees.</p>
+        <p style={{ color: 'var(--status-good-text)', fontSize: '18px' }}>✅ No fraud detected across all employees.</p>
       ) : (
         fraudData.map(({ employee, fraudFlags }) => (
           <div key={employee._id} style={{
-            backgroundColor: '#fff3f3',
-            border: '2px solid #f44336',
+            backgroundColor: 'var(--bg-card)',
+            border: '1px solid var(--status-danger-bar)',
             borderRadius: '8px',
             padding: '20px',
-            marginBottom: '20px'
+            marginBottom: '20px',
+            textAlign: 'left'
           }}>
-            <h3 style={{ color: '#f44336' }}>🚨 {employee.name} — {employee.role}</h3>
-            <p>Phone: {employee.phone}</p>
+            <h3 style={{ color: 'var(--status-danger-text)', margin: '0 0 8px' }}>🚨 {employee.name} — {employee.role}</h3>
+            <p style={{ color: 'var(--text)' }}>Phone: {employee.phone}</p>
             {fraudFlags.map((flag, index) => (
               <div key={index} style={{
-                backgroundColor: '#ffe0e0',
+                backgroundColor: 'var(--status-danger-bg)',
                 padding: '10px',
                 borderRadius: '5px',
                 marginTop: '10px'
               }}>
-                <p><strong>Leave Period:</strong> {flag.leavePeriod}</p>
-                <p><strong>Attendance Found:</strong> {flag.attendanceFound} record(s)</p>
-                <p><strong>⚠️ {flag.message}</strong></p>
+                <p style={{ color: 'var(--status-danger-text)' }}><strong>Leave Period:</strong> {flag.leavePeriod}</p>
+                <p style={{ color: 'var(--status-danger-text)' }}><strong>Attendance Found:</strong> {flag.attendanceFound} record(s)</p>
+                <p style={{ color: 'var(--status-danger-text)' }}><strong>⚠️ {flag.message}</strong></p>
               </div>
             ))}
           </div>
