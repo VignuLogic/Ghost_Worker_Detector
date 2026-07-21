@@ -4,7 +4,7 @@ function Navbar() {
   const location = useLocation()
 
   const linkStyle = (path) => ({
-    color: location.pathname === path ? 'var(--text-h)' : 'var(--text)',
+    color: location.pathname === path ? '#ffffff' : '#cccccc',
     textDecoration: 'none',
     fontSize: '15px',
     paddingBottom: '4px',
@@ -24,6 +24,8 @@ function Navbar() {
       <Link to="/" style={linkStyle('/')}>Employees</Link>
       <Link to="/attendance" style={linkStyle('/attendance')}>Attendance</Link>
       <Link to="/fraud" style={linkStyle('/fraud')}>Fraud Flags</Link>
+      <Link to="/riskscore" style={linkStyle('/riskscore')}>Risk Scores</Link>
+      <Link to="/payroll" style={linkStyle('/payroll')}>Payroll</Link>
     </nav>
   )
 }

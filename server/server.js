@@ -6,6 +6,7 @@ const employeeRoutes = require("./routes/employeeRoutes");
 const attendanceRoutes = require("./routes/attendanceRoutes");
 const leaveRoutes = require("./routes/leaveRoutes");
 const payrollRoutes = require("./routes/payrollRoutes");
+const riskScoreRoutes = require("./routes/riskScoreRoutes");
 
 dotenv.config();
 connectDB();
@@ -18,6 +19,7 @@ app.use("/api/employees", employeeRoutes);
 app.use("/api/attendance", attendanceRoutes);
 app.use("/api/leaves", leaveRoutes);
 app.use("/api/payroll", payrollRoutes);
+app.use("/api/riskscore", riskScoreRoutes);
 
 app.get("/", (req, res) => {
   res.send("Ghost Worker Detector API is running.");
