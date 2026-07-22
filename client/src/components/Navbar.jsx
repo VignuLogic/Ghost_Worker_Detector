@@ -26,6 +26,7 @@ function Navbar() {
       <Link to="/fraud" style={linkStyle('/fraud')}>Fraud Flags</Link>
       <Link to="/riskscore" style={linkStyle('/riskscore')}>Risk Scores</Link>
       <Link to="/payroll" style={linkStyle('/payroll')}>Payroll</Link>
+      <Link to="/ml" style={linkStyle('/ml')}>ML Analysis</Link>
     </nav>
   )
 }

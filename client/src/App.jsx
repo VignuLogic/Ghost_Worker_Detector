@@ -5,6 +5,7 @@ import FraudFlags from './pages/FraudFlags'
 import RiskScore from './pages/RiskScore'
 import Navbar from './components/Navbar'
 import Payroll from './pages/Payroll'
+import MLAnalysis from './pages/MLAnalysis'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/fraud" element={<FraudFlags />} />
         <Route path="/riskscore" element={<RiskScore />} />
         <Route path="/payroll" element={<Payroll />} />
+        <Route path="/ml" element={<MLAnalysis />} />
       </Routes>
     </div>
   )
