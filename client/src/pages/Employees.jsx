@@ -44,6 +44,7 @@ function Employees() {
             <th style={{ padding: '10px', textAlign: 'left', color: 'var(--text)', fontSize: '16px', fontWeight: 500 }}>Daily Wage</th>
             <th style={{ padding: '10px', textAlign: 'left', color: 'var(--text)', fontSize: '16px', fontWeight: 500 }}>Status</th>
             <th style={{ padding: '10px', textAlign: 'left', color: 'var(--text)', fontSize: '16px', fontWeight: 500 }}>Ghost Risk Score</th>
+            <th style={{ padding: '10px', textAlign: 'left' }}>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -75,6 +76,16 @@ function Employees() {
                     <span style={{ color: riskColors.text, fontSize: '13px' }}>{emp.ghostRiskScore}</span>
                   </div>
                 </td>
+                <td style={{ padding: '12px', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', borderRight: '1px solid var(--border)' }}>
+                    <a href={`/edit-employee/${emp._id}`} style={{
+                      backgroundColor: '#1a1a2e',
+                      color: 'white',
+                      padding: '5px 12px',
+                      borderRadius: '4px',
+                      textDecoration: 'none',
+                      fontSize: '12px'
+                    }}>Edit</a>
+                </td>                
               </tr>
             )
           })}

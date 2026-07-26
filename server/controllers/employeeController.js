@@ -39,4 +39,20 @@ const getEmployeeById = async (req, res) => {
   }
 };
 
-module.exports = { registerEmployee, getEmployees, getEmployeeById };   
+const updateEmployee = async (req, res) => {
+  try {
+    const employee = await Employee.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    if (!employee) {
+      return res.status(404).json({ message: "Employee not found." });
+    }
+    res.json(employee);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+module.exports = { registerEmployee, getEmployees, getEmployeeById, updateEmployee };
