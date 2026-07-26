@@ -1,7 +1,14 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 function Navbar() {
+  const navigate = useNavigate()
   const location = useLocation()
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    window.location.href = '/login'
+  }
 
   const linkStyle = (path) => ({
     color: location.pathname === path ? '#ffffff' : '#cccccc',
@@ -28,6 +35,18 @@ function Navbar() {
       <Link to="/payroll" style={linkStyle('/payroll')}>Payroll</Link>
       <Link to="/ml" style={linkStyle('/ml')}>ML Analysis</Link>
       <Link to="/add-employee" style={linkStyle('/add-employee')}>+ Add Employee</Link>
+      <button onClick={handleLogout} style={{
+        marginLeft: 'auto',
+        backgroundColor: 'transparent',
+        border: '1px solid var(--border)',
+        color: 'var(--text)',
+        padding: '6px 16px',
+        borderRadius: '6px',
+        cursor: 'pointer',
+        fontSize: '13px'
+      }}>
+        Logout
+      </button>
     </nav>
   )
 }
