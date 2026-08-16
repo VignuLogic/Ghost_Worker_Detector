@@ -183,7 +183,7 @@ function Attendance() {
                 <td style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontSize: '13px' }}>{new Date(record.date).toLocaleDateString()}</td>
                 <td style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontFamily: 'monospace', fontSize: '13px' }}>{record.deviceId}</td>
                 <td style={{ padding: '12px 16px' }}>
-                  <span style={{ color: record.isWithinGeofence ? '#085041' : '#791f1f', fontWeight: '500', fontSize: '13px' }}>
+                  <span style={{ color: record.isWithinGeofence ? '#5DCAA5' : '#F09595', fontWeight: '500', fontSize: '13px' }}>
                     {record.isWithinGeofence ? 'Yes' : 'No'}
                   </span>
                 </td>
