@@ -1,5 +1,6 @@
 const Attendance = require("../models/Attendance");
 const Employee = require("../models/Employee");
+const { isTokenValid, generateQRCode } = require("../utils/qrGenerator");
 
 // calculate distance between two GPS points in meters
 const getDistance = (lat1, lon1, lat2, lon2) => {
@@ -20,10 +21,14 @@ const getDistance = (lat1, lon1, lat2, lon2) => {
 // @route  POST /api/attendance
 const markAttendance = async (req, res) => {
   try {
-    const { employeeId, deviceId, location } = req.body;
+    const { employeeId, deviceId, location, qrToken } = req.body;
 
-    if (!employeeId || !deviceId || !location) {
+    if (!employeeId || !deviceId || !location || !qrToken) {
       return res.status(400).json({ message: "Please provide all required fields." });
+    }
+
+    if (!isTokenValid(qrToken)) {
+      return res.status(400).json({ message: "QR code expired or invalid. Please rescan." });
     }
 
     // check employee exists
@@ -109,5 +114,16 @@ const getAllAttendance = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+// @desc   Get the current live QR code (owner's display screen calls this)
+// @route  GET /api/attendance/qr/generate
+const getQRCode = async (req, res) => {
+  try {
+    const { token, qrDataURL, expiresIn } = await generateQRCode();
+    res.json({ qrDataURL, expiresIn });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
-module.exports = { markAttendance, getEmployeeAttendance, getAllAttendance };
+module.exports = { markAttendance, getEmployeeAttendance, getAllAttendance, getQRCode };
+

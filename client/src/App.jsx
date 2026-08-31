@@ -10,6 +10,8 @@ import MLAnalysis from './pages/MLAnalysis'
 import AddEmployee from './pages/AddEmployee'
 import EditEmployee from './pages/EditEmployee'
 import Login from './pages/Login'
+import QRDisplay from './pages/QRDisplay'
+import CheckIn from './pages/CheckIn'
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -41,6 +43,8 @@ function App() {
         <Route path="/add-employee" element={<AddEmployee />} />
         <Route path="/edit-employee/:id" element={<EditEmployee />} />
         <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/qr-display" element={<QRDisplay />} />
+        <Route path="/checkin" element={<CheckIn />} />
       </Routes>
     </div>
   )

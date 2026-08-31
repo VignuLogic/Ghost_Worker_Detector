@@ -4,8 +4,10 @@ const {
   markAttendance,
   getEmployeeAttendance,
   getAllAttendance,
+  getQRCode,
 } = require("../controllers/attendanceController");
 
+router.get("/qr/generate", getQRCode);
 router.post("/", markAttendance);
 router.get("/", getAllAttendance);
 router.get("/:employeeId", getEmployeeAttendance);
