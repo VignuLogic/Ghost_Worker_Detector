@@ -21,6 +21,14 @@ function App() {
     if (stored) setToken(stored)
   }, [])
 
+    if (window.location.pathname === '/checkin') {
+    return (
+      <Routes>
+        <Route path="/checkin" element={<CheckIn />} />
+      </Routes>
+    )
+  }
+  
   if (!token) {
     return (
       <Routes>

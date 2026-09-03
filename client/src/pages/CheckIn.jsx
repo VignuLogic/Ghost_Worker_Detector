@@ -13,12 +13,15 @@ function getDeviceId() {
 function CheckIn() {
   const [employees, setEmployees] = useState([])
   const [employeeId, setEmployeeId] = useState('')
-  const [qrToken, setQrToken] = useState('')
+  const [qrToken, setQrToken] = useState(() => {
+    const params = new URLSearchParams(window.location.search)
+    return params.get('token') || ''
+  })
+
   const [status, setStatus] = useState(null) // { type: 'success' | 'error', message }
   const [loading, setLoading] = useState(false)
-
   useEffect(() => {
-    axios.get('http://localhost:5000/api/employees')
+    axios.get('http://172.20.10.9:5000/api/employees')
       .then(res => setEmployees(res.data))
       .catch(() => setStatus({ type: 'error', message: 'Could not load employee list' }))
   }, [])

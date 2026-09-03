@@ -52,6 +52,7 @@ function Navbar() {
       <Link to="/payroll" style={linkStyle('/payroll')}>Payroll</Link>
       <Link to="/ml" style={linkStyle('/ml')}>ML Analysis</Link>
       <Link to="/add-employee" style={linkStyle('/add-employee')}>+ Add Employee</Link>
+      <Link to="/qr-display" style={linkStyle('/qr-display')}>Show QR</Link>
 
       <button
         onClick={toggleTheme}

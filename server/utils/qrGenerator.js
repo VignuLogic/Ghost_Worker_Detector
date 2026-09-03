@@ -21,9 +21,10 @@ const isTokenValid = (token) => {
   return token === currentToken && Date.now() <= tokenExpiry
 }
 
-const generateQRCode = async () => {
+const generateQRCode = async (baseUrl = 'http://172.20.10.9:5173') => {
   const token = getCurrentToken()
-  const qrDataURL = await QRCode.toDataURL(token, {
+  const checkInUrl = `${baseUrl}/checkin?token=${token}`
+  const qrDataURL = await QRCode.toDataURL(checkInUrl, {
     width: 300,
     margin: 2,
     color: {
@@ -31,7 +32,7 @@ const generateQRCode = async () => {
       light: '#ffffff'
     }
   })
-  return { token, qrDataURL, expiresIn: Math.round((tokenExpiry - Date.now()) / 1000) }
+  return { token, qrDataURL, expiresIn: Math.round((tokenExpiry - Date.now()) / 1000), checkInUrl }
 }
 
 // auto-refresh token every 60 seconds
