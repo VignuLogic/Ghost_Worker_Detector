@@ -39,7 +39,7 @@ function CheckIn() {
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
         try {
-          const res = await axios.post('http://localhost:5000/api/attendance', {
+          const res = await axios.post('http://172.20.10.9:5000/api/attendance', {
             employeeId,
             deviceId: getDeviceId(),
             qrToken,

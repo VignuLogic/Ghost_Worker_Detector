@@ -119,7 +119,7 @@ const getAllAttendance = async (req, res) => {
 const getQRCode = async (req, res) => {
   try {
     const { token, qrDataURL, expiresIn } = await generateQRCode();
-    res.json({ qrDataURL, expiresIn });
+    res.json({ token, qrDataURL, expiresIn });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
