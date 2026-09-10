@@ -4,7 +4,8 @@ from datetime import datetime, timedelta
 import random
 
 fake = Faker('en_IN')
-client = MongoClient("mongodb://127.0.0.1:27017/")
+import os
+client = MongoClient(os.environ.get("MONGO_URI", "mongodb://127.0.0.1:27017/"))
 db = client["ghost-worker-detector"]
 
 # clear existing data
