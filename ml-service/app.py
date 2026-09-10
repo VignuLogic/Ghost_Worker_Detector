@@ -10,7 +10,8 @@ app = Flask(__name__)
 CORS(app)
 
 # connect to MongoDB
-client = MongoClient("mongodb://127.0.0.1:27017/")
+import os
+client = MongoClient(os.environ.get("MONGO_URI", "mongodb://127.0.0.1:27017/"))
 db = client["ghost-worker-detector"]
 
 def get_employee_features():

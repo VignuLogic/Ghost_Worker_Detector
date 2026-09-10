@@ -8,7 +8,7 @@ function QRDisplay() {
 
   const fetchQR = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/attendance/qr/generate')
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/attendance/qr/generate`)
       setQrDataURL(res.data.qrDataURL)
       setExpiresIn(res.data.expiresIn)
       setError('')

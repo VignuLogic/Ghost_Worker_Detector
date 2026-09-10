@@ -6,7 +6,7 @@ function MLAnalysis() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5001/ml/analyze')
+    axios.get(`${import.meta.env.VITE_ML_URL}/ml/analyze`)
       .then(res => {
         setData(res.data)
         setLoading(false)

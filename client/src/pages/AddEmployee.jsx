@@ -35,7 +35,7 @@ function AddEmployee() {
     setLoading(true)
     setError('')
     try {
-      await axios.post('http://localhost:5000/api/employees', {
+      await axios.post(`${import.meta.env.VITE_API_URL}/employees`, {
         ...formData,
         dailyWage: Number(formData.dailyWage),
         workplaceLocation: {

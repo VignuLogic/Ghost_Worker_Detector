@@ -20,7 +20,7 @@ function EditEmployee() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/employees/${id}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/employees/${id}`)
       .then(res => {
         const emp = res.data
         setFormData({
