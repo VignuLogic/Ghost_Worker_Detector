@@ -21,7 +21,7 @@ const isTokenValid = (token) => {
   return token === currentToken && Date.now() <= tokenExpiry
 }
 
-const generateQRCode = async (baseUrl = 'http://172.20.10.9:5173') => {
+const generateQRCode = async (baseUrl = process.env.FRONTEND_URL || 'http://172.20.10.9:5173') => {
   const token = getCurrentToken()
   const checkInUrl = `${baseUrl}/checkin?token=${token}`
   const qrDataURL = await QRCode.toDataURL(checkInUrl, {
