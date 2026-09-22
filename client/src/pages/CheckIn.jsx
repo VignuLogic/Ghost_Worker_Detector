@@ -21,7 +21,7 @@ function CheckIn() {
   const [status, setStatus] = useState(null) // { type: 'success' | 'error', message }
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-    axios.get('http://172.20.10.9:5000/api/employees')
+    axios.get(`${import.meta.env.VITE_API_URL}/employees`)
       .then(res => setEmployees(res.data))
       .catch(() => setStatus({ type: 'error', message: 'Could not load employee list' }))
   }, [])
@@ -39,7 +39,7 @@ function CheckIn() {
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
         try {
-          const res = await axios.post('http://172.20.10.9:5000/api/attendance', {
+          const res = await axios.post(`${import.meta.env.VITE_API_URL}/attendance`, {
             employeeId,
             deviceId: getDeviceId(),
             qrToken,
